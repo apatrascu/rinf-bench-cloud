@@ -52,4 +52,4 @@ RUN sync
 ###############################################################################
 # Start container services
 ###############################################################################
-ENTRYPOINT /vagrancy && /start.sh && /bin/bash
+ENTRYPOINT /start.sh & /vagrancy & /bin/bash
