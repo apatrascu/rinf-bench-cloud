@@ -13,6 +13,7 @@ RUN yum update -y && yum install -y \
     php70u \
     php70u-cli \
     php70u-json \
+    net-tools \
     php70u-mysqlnd
 RUN mkdir -p /dataroot
 RUN chmod 777 /dataroot
@@ -28,13 +29,23 @@ RUN chmod 777 /*.php ;\
     chmod 777 /etc/php.ini
 EXPOSE 80
 
+
+###############################################################################
+# Docker registry
+###############################################################################
+COPY ./registry/registry /bin/registry
+COPY ./registry/config-example.yml /etc/docker/registry/config.yml
+COPY ./registry/ld-musl-x86_64.so.1 /
+COPY docker-entrypoint.sh /entrypoint.sh
+
+EXPOSE 5000
+
 ###############################################################################
 # Vagrant Cloud
 ###############################################################################
 RUN wget -q https://github.com/ryandoyle/vagrancy/releases/download/0.0.4/vagrancy-0.0.4-linux-x86_64.tar.gz -O /vagrancy.tar.gz ;\
     tar xf /vagrancy.tar.gz --strip 1
 
-CMD ["/vagrancy"]
 EXPOSE 8099
 
 
@@ -52,4 +63,5 @@ RUN sync
 ###############################################################################
 # Start container services
 ###############################################################################
-ENTRYPOINT /start.sh & /vagrancy & /bin/bash
+#ENTRYPOINT /entrypoint.sh /etc/docker/registry/config.yml & /start.sh & /vagrancy & /bin/bash
+ENTRYPOINT /start.sh & /bin/bash
