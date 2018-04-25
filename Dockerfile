@@ -13,6 +13,7 @@ RUN yum update -y && yum install -y \
     php70u \
     php70u-cli \
     php70u-json \
+    java-1.8.0-openjdk \
     net-tools \
     php70u-mysqlnd
 RUN mkdir -p /dataroot
@@ -48,6 +49,16 @@ RUN wget -q https://github.com/ryandoyle/vagrancy/releases/download/0.0.4/vagran
 
 EXPOSE 8099
 
+###############################################################################
+# Docker Repo
+###############################################################################
+RUN mkdir /gitbucket_data
+COPY ./gitbucket.sh /opt/gitbucket.sh
+COPY ./gitbucket_data/ /gitbucket_data/
+ENV GITBUCKET_VER 4.23.0
+RUN wget -q https://github.com/gitbucket/gitbucket/releases/download/$GITBUCKET_VER/gitbucket.war -O /opt/gitbucket.war
+
+EXPOSE 8080
 
 ################################################################################
 ## Start script

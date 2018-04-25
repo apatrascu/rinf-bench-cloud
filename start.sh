@@ -33,3 +33,16 @@ rm -rf /var/lib/registry
 ln -s /dataroot/dockerregistry /var/lib/registry
 
 nohup /entrypoint.sh /etc/docker/registry/config.yml &
+
+##################################
+# Docker Repo
+##################################
+
+if [ ! -d /dataroot/gitbucket ]; then
+    mv /gitbucket_data /dataroot/gitbucket
+
+fi
+
+chmod 777 /dataroot/gitbucket
+ln -s /dataroot/gitbucket /root/.gitbucket
+nohup /opt/gitbucket.sh &
