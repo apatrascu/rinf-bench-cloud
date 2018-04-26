@@ -46,3 +46,8 @@ fi
 chmod 777 /dataroot/gitbucket
 ln -s /dataroot/gitbucket /root/.gitbucket
 nohup /opt/gitbucket.sh &
+
+##################################
+# Samba share
+##################################
+nohup /usr/bin/samba.sh &

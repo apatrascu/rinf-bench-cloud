@@ -60,6 +60,20 @@ RUN wget -q https://github.com/gitbucket/gitbucket/releases/download/$GITBUCKET_
 
 EXPOSE 8080
 
+
+###############################################################################
+# Samba
+###############################################################################
+RUN mkdir /dataroot/samba
+RUN yum install -y samba samba-client samba-common
+
+COPY ./samba.sh /usr/bin/samba.sh
+COPY ./smb.conf /etc/samba/
+
+RUN chmod 777 /usr/bin/samba.sh
+
+EXPOSE 137/udp 138/udp 139 445
+
 ################################################################################
 ## Start script
 ################################################################################
