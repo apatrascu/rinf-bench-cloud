@@ -50,4 +50,4 @@ nohup /opt/gitbucket.sh &
 ##################################
 # Samba share
 ##################################
-nohup /usr/bin/samba.sh &
+#nohup /usr/bin/samba.sh &
