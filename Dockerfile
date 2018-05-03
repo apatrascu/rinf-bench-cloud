@@ -9,6 +9,7 @@ RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 RUN yum update -y && yum install -y \
     vim \
     wget \
+    git  \
     httpd \
     php70u \
     php70u-cli \
@@ -73,6 +74,31 @@ EXPOSE 8080
 #RUN chmod 777 /usr/bin/samba.sh
 #
 #EXPOSE 137/udp 138/udp 139 445
+
+
+################################################################################
+## Docker Registry UI
+################################################################################
+RUN mkdir /ui
+COPY ./registry/ui/ /ui/
+
+RUN yum install -y \
+        nodejs \
+        python36u \
+        python36u-libs \
+        python36u-devel \
+        python36u-pip
+
+WORKDIR /ui
+RUN cp /usr/bin/python3.6 /usr/bin/python3
+RUN python3 -m pip install -r /ui/requirements.txt
+RUN npm install -g bower
+RUN bower --allow-root install
+
+RUN echo '{"1": {"name": "Images", "url": "localhost:5000", "user": null, "password": null}}' > /ui/db.json
+
+EXPOSE 7777
+WORKDIR /
 
 ################################################################################
 ## Start script

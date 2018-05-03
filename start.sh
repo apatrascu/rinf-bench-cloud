@@ -51,3 +51,10 @@ nohup /opt/gitbucket.sh &
 # Samba share
 ##################################
 #nohup /usr/bin/samba.sh &
+
+##################################
+# Docker Registry Frontend
+##################################
+cd /ui
+nohup python3 frontend.py -p 7777 config.json &
+cd /
