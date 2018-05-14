@@ -28,8 +28,8 @@ sudo docker run -dit \
 sudo docker ps -a
 ```
 where:
-  * `80` - Artifact storage port
-  * `5000` - Docker registry port
-  * `8099` - Vagrant Cloud registry port
+  * `80` - 3rd party precompiled data storage port
+  * `5000` - Docker artifacts registry port
+  * `8099` - Vagrant Cloud artifacts registry port
   * `8080` - Git port
-  * `7777` - Docker registry UI port
+  * `7777` - Docker artifact registry UI port
