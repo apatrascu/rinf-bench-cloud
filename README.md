@@ -9,6 +9,7 @@ sudo docker run -dit \
     -p 2502:8099 \
     -p 2503:8080 \
     -p 2504:7777 \
+    -p 2505:3306 \
     --restart=always \
     --name aibenchcloud01 \
     -v /extrastorage01/aibenchcloud01:/dataroot \
@@ -20,6 +21,7 @@ sudo docker run -dit \
     -p 2602:8099 \
     -p 2603:8080 \
     -p 2604:7777 \
+    -p 2605:3306 \
     --restart=always \
     --name commbenchcloud01 \
     -v /extrastorage01/commbenchcloud01:/dataroot \
@@ -33,3 +35,4 @@ where:
   * `8099` - Vagrant Cloud artifacts registry port
   * `8080` - Git port
   * `7777` - Docker artifact registry UI port
+  * `3306` - MariaDB server port
