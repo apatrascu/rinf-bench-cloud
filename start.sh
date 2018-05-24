@@ -59,10 +59,12 @@ nohup /opt/gitbucket.sh &
 cd /ui
 nohup python3 frontend.py -p 7777 config.json &
 
+
 ########################################################################################################################
 # MariaDB
 ########################################################################################################################
 nohup /mariadb.sh mysqld_safe &
 
 
+# This must be the last thing being ran
 /fix-permissions.sh /dataroot
