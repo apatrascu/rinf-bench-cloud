@@ -28,8 +28,8 @@ sudo docker run -dit \
     -p 2605:3306 \
     -e USE_SAMBA=False \
     --restart=always \
-    --name commbenchcloud01 \
-    -v /extrastorage01/commbenchcloud01:/dataroot \
+    --name commsbenchcloud01 \
+    -v /extrastorage01/commsbenchcloud01:/dataroot \
     palecsandru/rinf-bench-cloud
 
 sudo docker ps -a
@@ -64,8 +64,8 @@ sudo docker run -dit \
     -p 2605:3306 \
     -e USE_SAMBA=False \
     --restart=always \
-    --name commbenchcloud01 \
-    -v /extrastorage01/commbenchcloud01:/dataroot \
+    --name commsbenchcloud01 \
+    -v /extrastorage01/commsbenchcloud01:/dataroot \
     palecsandru/rinf-bench-cloud
 
 sudo docker ps -a
