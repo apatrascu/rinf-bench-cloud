@@ -39,7 +39,8 @@ EXPOSE 80
 COPY ./registry/registry /bin/registry
 COPY ./registry/config-example.yml /etc/docker/registry/config.yml
 COPY ./registry/ld-musl-x86_64.so.1 /
-COPY registry-entrypoint.sh /entrypoint.sh
+COPY registry-entrypoint.sh /
+ENV REGISTRY_STORAGE_DELETE_ENABLED true
 EXPOSE 5000
 
 

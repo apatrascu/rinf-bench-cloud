@@ -33,7 +33,7 @@ chmod 777 /dataroot/dockerregistry
 rm -rf /var/lib/registry
 ln -s /dataroot/dockerregistry /var/lib/registry
 
-nohup /entrypoint.sh /etc/docker/registry/config.yml &
+nohup /registry-entrypoint.sh /etc/docker/registry/config.yml &
 
 
 ########################################################################################################################
