@@ -1,6 +1,6 @@
 # rinf-bench-cloud
 
-
+## Running
 If **you do not want** SAMBA:
 
 ```bash
@@ -79,3 +79,11 @@ where:
   * `7777` - Docker artifact registry UI port
   * `3306` - MariaDB server port
   * `139`, `445` - SAMBA ports. **These must not be changed! Also, only one instance of the containers must have `USE_SAMBA=True`**
+
+## Garbage collection
+To garbage collect unused Docker images:
+
+```bash
+sudo docker exec -it aibenchcloud01 bin/registry garbage-collect /etc/docker/registry/config.yml
+sudo docker exec -it commsbenchcloud01 bin/registry garbage-collect /etc/docker/registry/config.yml
+```
